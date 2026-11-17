@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap'); /* Load optional fonts; system fonts remain the fallback. */
+:root { --purple: #7357ce; --purple-dark: #6045ba; --ink: #292733; --muted: #777581; --line: #eae9ef; --paper: #faf9fc; --green: #3a826c; } /* Keep reusable colors in one place. */
+* { box-sizing: border-box; } /* Include padding and borders inside element widths. */
+body { margin: 0; background: var(--paper); color: var(--ink); font: 14px 'DM Sans', sans-serif; line-height: 1.6; } /* Set the overall page appearance. */
+button, input, select { font: inherit; } /* Make controls use the same typography as the page. */
+button, a, input, select { -webkit-tap-highlight-color: transparent; } /* Remove the mobile tap flash. */
+button, a { touch-action: manipulation; } /* Make tapping controls responsive. */
+button { cursor: pointer; } /* Show that buttons can be clicked. */
+a { color: inherit; text-decoration: none; } /* Use clean links in the navigation. */
+button:focus-visible, a:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid #b19beb; outline-offset: 4px; } /* Keep keyboard focus visible. */
+.skip-link { position: fixed; top: -70px; left: 20px; z-index: 20; padding: 10px; background: white; } /* Hide the skip link until focused. */
+.skip-link:focus { top: 10px; } /* Reveal the skip link for keyboard navigation. */
+.sidebar { width: 244px; position: fixed; inset: 0 auto 0 0; background: white; border-right: 1px solid var(--line); padding: 30px 23px 20px; display: flex; flex-direction: column; z-index: 5; } /* Create the fixed desktop sidebar. */
+.brand { display: flex; gap: 9px; align-items: center; font: 800 31px 'Manrope', sans-serif; letter-spacing: -1.5px; } /* Style the Live Easy wordmark. */
+.brand-icon { width: 35px; height: 35px; border-radius: 11px; background: var(--purple); color: white; display: grid; place-items: center; font-size: 30px; line-height: 1; } /* Draw a purple house badge. */
+.brand-dot { color: var(--purple); margin-left: -8px; } /* Color the final logo dot. */
+.eyebrow { font-size: 10px; letter-spacing: 1.7px; font-weight: 700; color: var(--muted); } /* Style small section labels. */
+.side-label { margin: 48px 13px 13px; } /* Space the navigation label. */
+nav { display: grid; gap: 8px; } /* Separate navigation links. */
+nav a { padding: 12px 15px; border-radius: 9px; color: #777480; display: flex; gap: 13px; align-items: center; font-weight: 500; } /* Give each link an easy click target. */
+nav a > span:first-child { font-size: 22px; width: 23px; line-height: 1; } /* Align the menu symbols. */
+nav a:hover { background: #f8f6fc; } /* Highlight hovered navigation links. */
+nav a.active { background: #f0ebfb; color: var(--purple-dark); font-weight: 700; } /* Mark the current page. */
+.nav-count { margin-left: auto; font-size: 11px; border-radius: 6px; padding: 0 7px; background: #ece8f4; } /* Display the unfinished chore count. */
+.sidebar-bottom { margin-top: auto; } /* Push home controls down the sidebar. */
+.together { background: #f7f5fc; border: 1px solid #eee9f8; border-radius: 12px; padding: 18px; margin: 25px 0; } /* Create the sidebar message card. */
+.together > span { color: var(--purple); display: block; margin-bottom: 12px; font-size: 22px; } /* Decorate the card with a star. */
+.together strong { font-size: 13px; line-height: 1.7; } /* Style the friendly message. */
+.together p { font-size: 11px; color: var(--muted); margin-bottom: 0; } /* Style supporting sidebar text. */
+.house-switch { display: flex; align-items: center; gap: 10px; width: 100%; background: transparent; border: 0; padding: 17px 0 0; border-top: 1px solid var(--line); text-align: left; } /* Make the household settings button. */
+.home-square { display: grid; place-items: center; width: 34px; height: 38px; border: 1px solid var(--line); border-radius: 9px; font-size: 24px; } /* Draw the settings house icon. */
+.house-switch strong { display: block; font-size: 11px; max-width: 125px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; } /* Fit long household names in the sidebar. */
+.house-switch small { font-size: 10px; color: var(--muted); } /* Show the household size. */
+.house-switch > span:last-child { margin-left: auto; color: var(--muted); } /* Place the settings gear on the right. */
+.workspace { margin-left: 244px; } /* Leave room for the fixed sidebar. */
+.topbar { height: 80px; border-bottom: 1px solid var(--line); padding: 0 42px; display: flex; align-items: center; justify-content: space-between; background: #fff; font-size: 10px; letter-spacing: 1px; color: #9995a3; } /* Create the slim top bar. */
+.topbar strong { color: #666170; font-weight: 500; margin-left: 7px; } /* Emphasize the current breadcrumb. */
+.topbar-right { display: flex; align-items: center; gap: 22px; } /* Align the storage label and home avatar. */
+.saved-label { color: #788979; letter-spacing: 0; font-size: 11px; } /* Show that storage is browser-local. */
+.avatar { display: inline-flex; align-items: center; justify-content: center; width: 33px; height: 33px; border-radius: 50%; font-weight: 700; font-size: 11px; border: 2px solid white; background: #ebe6f8; color: #7357a5; flex-shrink: 0; } /* Give roommates circular initials. */
+.avatar-purple { background: #efe9fb; color: var(--purple); } /* Color the home avatar. */
+.avatar-1 { background: #f6e6d9; color: #a47752; } /* Color the second roommate avatar. */
+.avatar-2 { background: #e1eee7; color: #568971; } /* Color the third roommate avatar. */
+.avatar-3 { background: #e2eaf6; color: #587aa7; } /* Color the fourth roommate avatar. */
+main { max-width: 1440px; margin: auto; padding: 33px 42px 20px; } /* Center and pad all tab content. */
+h1, h2, h3 { font-family: 'Manrope', sans-serif; line-height: 1.35; } /* Use a rounded heading font. */
+h1 { margin: 0 0 7px; font-size: 29px; letter-spacing: -1.2px; font-weight: 800; } /* Style the main tab title. */
+h2 { margin: 0; font-size: 16px; letter-spacing: -.35px; } /* Style card headings. */
+h3 { margin: 0; font-size: 14px; } /* Style smaller section headings. */
+p { margin-top: 0; } /* Keep paragraph spacing predictable. */
+.muted { color: var(--muted); } /* Provide a reusable secondary text color. */
+.page-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 27px; } /* Align page titles with the primary action. */
+.page-heading p { margin: 0; color: var(--muted); font-size: 13px; } /* Style the tab subtitle. */
+.date-pill { background: white; border: 1px solid var(--line); padding: 8px 13px; border-radius: 7px; font-size: 11px; white-space: nowrap; } /* Show today's date. */
+.hero { position: relative; background: #eee8fa; border: 1px solid #e7dff5; min-height: 171px; border-radius: 13px; padding: 27px 30px; margin-bottom: 25px; overflow: hidden; } /* Create the lavender welcome banner. */
+.hero h2 { font-size: 23px; letter-spacing: -.7px; margin: 7px 0; max-width: 70%; } /* Give the banner a welcoming headline. */
+.hero p { color: #817290; font-size: 12px; max-width: 63%; margin-bottom: 18px; } /* Keep the banner description readable. */
+.hero .eyebrow { color: #8c74ad; font-size: 9px; } /* Tint the banner label. */
+.hero-meta { display: flex; align-items: center; gap: 12px; color: #7f6e93; font-size: 11px; } /* Align member avatars and home label. */
+.avatar-stack { display: flex; padding-left: 5px; } /* Stack the roommate avatars. */
+.avatar-stack .avatar { margin-left: -5px; width: 26px; height: 26px; font-size: 9px; } /* Overlap small avatars in the banner. */
+.house-art { position: absolute; right: 45px; bottom: 19px; width: 178px; height: 135px; } /* Position a CSS house illustration. */
+.house-art::before { content: ''; position: absolute; width: 101px; height: 91px; background: #d0c0ec; left: 45px; top: 38px; border-radius: 2px 2px 6px 6px; box-shadow: inset -23px 0 #c3afe5; transform: rotate(-5deg); } /* Draw the body and shaded side of the house. */
+.house-art::after { content: ''; position: absolute; width: 92px; height: 92px; background: #a58acb; transform: rotate(40deg); top: -1px; left: 45px; border-radius: 7px 3px 7px 3px; clip-path: polygon(0 0, 100% 0, 0 100%); } /* Draw the triangular roof. */
+.house-door { position: absolute; height: 43px; width: 25px; background: #9c80c3; left: 74px; top: 88px; transform: rotate(-5deg); z-index: 1; border-radius: 12px 12px 0 0; } /* Draw an arched front door. */
+.house-window { position: absolute; height: 23px; width: 22px; background: #fff2d4; left: 110px; top: 72px; transform: rotate(-5deg); z-index: 1; border: 3px solid #ad93d1; } /* Draw a warm house window. */
+.house-spark { position: absolute; right: 0; top: 18px; font-size: 29px; color: #b39acb; } /* Add a decorative sparkle next to the house. */
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 27px; } /* Put four statistics in a row. */
+.stat-card { background: white; border: 1px solid var(--line); padding: 18px 20px; border-radius: 11px; } /* Style a summary statistic card. */
+.stat-top { display: flex; justify-content: space-between; align-items: center; font-size: 11px; color: var(--muted); } /* Align a metric label with its icon. */
+.stat-icon { border-radius: 7px; background: #f2edfc; color: #8a6fc6; padding: 2px 8px; font-size: 16px; } /* Create a small metric icon background. */
+.stat-icon.green { background: #edf5ee; color: #70a282; } /* Color the chore metric green. */
+.stat-icon.peach { background: #fff1e6; color: #c89c71; } /* Color the shopping metric peach. */
+.stat-icon.blue { background: #eef2fc; color: #879acb; } /* Color the roommate metric blue. */
+.stat-value { display: block; font: 800 27px 'Manrope', sans-serif; letter-spacing: -1px; margin: 9px 0 5px; } /* Make the main statistic easy to scan. */
+.stat-foot { font-size: 10px; color: #96909f; } /* Explain the statistic in smaller text. */
+.two-columns { display: grid; grid-template-columns: 1.35fr 1fr; gap: 22px; margin-bottom: 23px; } /* Split the dashboard into two columns. */
+.card { background: white; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; } /* Create a reusable white panel. */
+.card-head { padding: 21px 23px 15px; display: flex; align-items: center; justify-content: space-between; gap: 10px; } /* Space card titles and secondary links. */
+.card-subtitle { color: #9993a1; font-size: 11px; margin: 4px 0 0; } /* Explain each panel's contents. */
+.text-button { background: none; border: 0; padding: 0; color: var(--purple); font-size: 11px; text-decoration: none; } /* Style lightweight action buttons. */
+.text-button:hover { text-decoration: underline; } /* Make hovered text actions recognizable. */
+.list-row { display: flex; align-items: center; gap: 12px; padding: 14px 23px; border-top: 1px solid #f2f0f5; } /* Create a consistent compact list row. */
+.row-icon { width: 34px; height: 34px; display: grid; place-items: center; background: #f5f0fa; border-radius: 10px; color: #9276b2; font-size: 17px; flex-shrink: 0; } /* Put a symbol beside an expense. */
+.row-main { flex: 1; min-width: 0; } /* Let primary row content grow without overflowing. */
+.row-main strong { display: block; font-size: 12px; font-weight: 600; overflow-wrap: anywhere; } /* Style row titles and wrap long input. */
+.row-main small { display: block; color: #96909e; font-size: 10px; margin-top: 2px; } /* Show secondary row details. */
+.row-end { text-align: right; font-size: 12px; font-weight: 600; } /* Align row amounts on the right. */
+.row-end small { display: block; color: #aaa3b2; font-size: 9px; font-weight: 400; } /* Style small amount details. */
+.pill { display: inline-block; padding: 3px 9px; background: #f4f1f9; border-radius: 5px; color: #8e79a5; font-size: 10px; white-space: nowrap; } /* Display compact category labels. */
+.pill.warning { background: #fff3e7; color: #b68c53; } /* Highlight overdue or due-today chores. */
+.pill.success { background: #eaf4ee; color: #629075; } /* Highlight completed tasks. */
+.check-button { display: grid; place-items: center; width: 20px; height: 20px; border: 1.5px solid #dcd5e8; border-radius: 6px; background: white; color: white; padding: 0; flex-shrink: 0; } /* Create an accessible completion button. */
+.check-button.checked { background: #9b83c5; border-color: #9b83c5; } /* Fill completed check buttons. */
+.completed .row-main strong { text-decoration: line-through; color: #a39baa; } /* Cross out completed task names. */
+.balance-row { display: flex; align-items: center; gap: 9px; padding: 10px 23px; } /* Align roommate balances. */
+.balance-row .row-main strong { font-size: 11px; } /* Keep balance names compact. */
+.balance-amount { color: var(--green); font-size: 12px; font-weight: 700; } /* Color positive balances. */
+.balance-amount.owes { color: #b78860; } /* Color money still owed. */
+.card-note { margin: 14px 23px 18px; padding: 10px 12px; background: #f8f6fb; color: #9a8ca9; font-size: 10px; border-radius: 6px; } /* Explain balance or progress calculations. */
+.progress-track { height: 6px; border-radius: 10px; background: #f0eaf7; overflow: hidden; margin-top: 10px; } /* Create the chore progress background. */
+.progress-fill { height: 100%; background: #a28bc6; border-radius: inherit; } /* Fill the chore completion progress bar. */
+.progress-area { padding: 0 23px 20px; } /* Add breathing room around progress. */
+.quick-actions { display: flex; gap: 12px; flex-wrap: wrap; margin: 0 0 22px; } /* Arrange useful dashboard shortcuts. */
+.button { border: 1px solid var(--line); border-radius: 7px; background: white; padding: 9px 14px; color: #6c6576; font-size: 12px; font-weight: 500; display: inline-flex; align-items: center; justify-content: center; gap: 7px; } /* Style standard buttons. */
+.button:hover { background: #f6f2fc; border-color: #dacdec; } /* Show button hover feedback. */
+.button.primary { background: var(--purple); border-color: var(--purple); color: white; } /* Style primary actions in purple. */
+.button.primary:hover { background: var(--purple-dark); } /* Darken primary actions on hover. */
+.button.danger { color: #b35764; background: #fff6f6; border-color: #f1d9de; } /* Identify destructive controls. */
+.page-footer { margin-top: 30px; border-top: 1px solid var(--line); padding-top: 18px; display: flex; justify-content: space-between; gap: 12px; color: #aba5b1; font-size: 10px; } /* Add a quiet footer. */
+.toolbar { display: flex; gap: 12px; padding: 0 23px 20px; flex-wrap: wrap; } /* Arrange search and filtering controls. */
+input, select { border: 1px solid #e4dfeb; background: white; border-radius: 7px; padding: 9px 12px; color: #554f60; min-width: 0; } /* Style form fields and filters. */
+.toolbar input { flex: 1; min-width: 160px; } /* Let search use spare toolbar space. */
+.toolbar select { max-width: 200px; } /* Keep filters compact. */
+.table-wrap { overflow-x: auto; } /* Allow wide tables to scroll on small screens. */
+table { width: 100%; border-collapse: collapse; text-align: left; font-size: 12px; } /* Create readable data tables. */
+th { font-weight: 500; color: #928998; font-size: 10px; background: #fcfbfd; padding: 11px 23px; border-block: 1px solid var(--line); white-space: nowrap; } /* Style table header cells. */
+td { padding: 17px 23px; border-bottom: 1px solid #f2f0f5; white-space: nowrap; } /* Space data rows clearly. */
+td:first-child { white-space: normal; min-width: 140px; overflow-wrap: anywhere; } /* Wrap long record titles. */
+.table-person { display: flex; align-items: center; gap: 8px; } /* Show an avatar beside a payer. */
+.row-actions { display: flex; gap: 12px; align-items: center; } /* Group edit and delete controls. */
+.delete-button { color: #b07885; } /* Make delete actions distinct from editing. */
+.empty-state { padding: 40px 24px; text-align: center; color: #95899f; } /* Explain when a list has no matching records. */
+.empty-state strong { display: block; color: #65586f; margin-bottom: 4px; } /* Emphasize empty-state guidance. */
+.section-gap { margin-top: 24px; } /* Separate tab sections. */
+.shopping-summary { display: flex; justify-content: space-between; padding: 17px 23px; background: #fcfaf5; color: #9b8462; font-size: 12px; border-top: 1px solid #f2eadf; } /* Show the remaining shopping estimate. */
+.roommates { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 23px 22px; } /* Arrange the roommate chips. */
+.roommate-chip { background: #faf8fc; border: 1px solid #eee9f5; padding: 7px 13px 7px 7px; border-radius: 30px; display: flex; align-items: center; gap: 7px; font-size: 11px; } /* Style each household member. */
+dialog { border: 1px solid var(--line); border-radius: 15px; padding: 27px; width: min(480px, calc(100% - 30px)); color: var(--ink); box-shadow: 0 25px 80px #34224926; max-height: 90vh; overflow-y: auto; } /* Style the shared modal form. */
+dialog::backdrop { background: #29213665; backdrop-filter: blur(3px); } /* Dim the page behind an open dialog. */
+.dialog-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; } /* Align the dialog title and close button. */
+.dialog-header h2 { font-size: 22px; } /* Make the form heading prominent. */
+.dialog-header .eyebrow { margin-bottom: 6px; font-size: 9px; } /* Space the small form label. */
+.icon-button { background: transparent; border: 0; font-size: 25px; line-height: 1; color: #8e839a; padding: 3px 7px; } /* Style the close button. */
+.field { display: grid; gap: 6px; margin-bottom: 15px; } /* Keep labels beside their own fields. */
+.field label { font-size: 12px; color: #73687f; font-weight: 500; } /* Style input labels. */
+.field input, .field select { width: 100%; } /* Fill the available dialog width. */
+.field small, .form-help { color: #9b90a4; font-size: 11px; } /* Explain optional form details. */
+.dialog-actions { display: flex; justify-content: flex-end; gap: 9px; padding-top: 16px; border-top: 1px solid var(--line); } /* Place save and cancel at the form bottom. */
+.form-error { color: #b25268; font-size: 12px; } /* Make validation and storage errors visible. */
+.toast { position: fixed; bottom: 24px; left: calc(50% + 122px); transform: translate(-50%, 20px); background: #40334f; color: white; padding: 11px 22px; border-radius: 9px; font-size: 12px; opacity: 0; pointer-events: none; transition: .2s; z-index: 30; max-width: 90vw; } /* Prepare the save notification. */
+.toast.show { opacity: 1; transform: translate(-50%, 0); } /* Reveal the current notification. */
+.settings-actions { display: grid; gap: 10px; margin-top: 23px; } /* Arrange data management actions. */
+@media (min-width: 1450px) { main { padding-top: 40px; } .hero { min-height: 190px; } .list-row { padding-block: 17px; } } /* Use extra space on large desktop screens. */
+@media (max-width: 1100px) { .sidebar { width: 205px; padding-inline: 17px; } .workspace { margin-left: 205px; } main { padding: 28px 25px; } .topbar { padding-inline: 25px; } .stats-grid { gap: 10px; } .stat-card { padding: 14px; } .two-columns { grid-template-columns: 1fr 1fr; gap: 16px; } .house-art { right: 15px; } .toast { left: calc(50% + 102px); } } /* Compact the desktop layout for laptops. */
+@media (max-width: 800px) { .sidebar { position: static; width: 100%; padding: 15px 20px 10px; border-right: 0; border-bottom: 1px solid var(--line); } .brand { font-size: 26px; } .brand-icon { width: 30px; height: 30px; } .side-label, .sidebar-bottom { display: none; } nav { display: flex; margin-top: 15px; gap: 6px; } nav a { flex: 1; justify-content: center; padding: 9px 6px; font-size: 12px; gap: 7px; } nav a > span:first-child { font-size: 18px; width: auto; } .nav-count { display: none; } .workspace { margin-left: 0; } .topbar { height: 52px; padding-inline: 22px; } main { padding: 26px 20px; } .toast { left: 50%; } .hero { padding: 23px; } .hero h2 { font-size: 20px; } } /* Switch to top navigation on tablets and phones. */
+@media (max-width: 560px) { .two-columns { grid-template-columns: 1fr; } .stats-grid { grid-template-columns: 1fr 1fr; } h1 { font-size: 25px; } .page-heading { gap: 12px; align-items: flex-start; } .page-heading p { font-size: 11px; max-width: 240px; } .date-pill { font-size: 9px; padding: 6px; } .hero { min-height: 190px; } .hero h2 { max-width: 75%; font-size: 19px; } .hero p { max-width: 70%; } .house-art { transform: scale(.65); transform-origin: bottom right; right: 8px; bottom: 24px; } .hero-meta { font-size: 9px; gap: 6px; } .saved-label { font-size: 9px; } .topbar-right { gap: 9px; } .page-footer { flex-direction: column; gap: 3px; } .quick-actions { gap: 7px; } .quick-actions .button { font-size: 10px; padding: 8px 10px; } .list-row, .card-head { padding-inline: 17px; } .row-actions { gap: 9px; } .row-actions .text-button { font-size: 10px; } .toolbar { padding-inline: 17px; } .toolbar select { max-width: none; flex: 1; } .pill { font-size: 9px; padding-inline: 6px; } } /* Keep the complete interface usable on narrow phones. */
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } } /* Respect reduced-motion preferences. */
+
+[hidden] { display: none !important; } /* Ensure hidden form controls and screens stay hidden. */
+body.auth-mode { background: #faf8fd; } /* Give welcome and login a calm full-page background. */
+.auth-mode > .sidebar, .auth-mode > .workspace, .auth-mode > .skip-link { display: none; } /* Keep household views out of sight before login. */
+body:not(.auth-mode) > #auth-screen { display: none; } /* Remove entry screens from the logged-in layout. */
+.auth-layout { display: grid; grid-template-columns: .85fr 1.15fr; min-height: 100vh; } /* Split welcome into a brand panel and a practical form. */
+.auth-story { padding: 55px clamp(30px, 5vw, 85px); background: #eee7f8; display: flex; flex-direction: column; justify-content: center; align-items: flex-start; } /* Create the lavender introduction panel. */
+.auth-story .brand { margin-bottom: 80px; } /* Give the introduction breathing room below the logo. */
+.auth-story h1 { font-size: clamp(32px, 3.6vw, 51px); line-height: 1.15; margin: 12px 0 22px; letter-spacing: -2px; } /* Make the welcome message easy to read. */
+.auth-story > p:not(.eyebrow) { color: #8a7a9b; max-width: 320px; } /* Keep the introduction copy comfortably narrow. */
+.auth-feature { margin: 9px 0; color: #776386; font-size: 13px; } /* Present the three core benefits clearly. */
+.auth-story > small { margin-top: 65px; max-width: 350px; color: #95859f; font-size: 11px; } /* Explain the local-only boundary without implying server security. */
+.auth-panel { width: 100%; max-width: 850px; padding: 65px clamp(25px, 5vw, 90px); margin: auto; } /* Center the entry form in the main panel. */
+.auth-panel h1 { margin: 15px 0 12px; font-size: 31px; } /* Make the current setup or login step prominent. */
+.auth-panel form { margin-top: 25px; } /* Separate the form from its introduction. */
+.auth-panel .field { margin-bottom: 18px; } /* Give entry controls comfortable vertical spacing. */
+.auth-panel input { padding-block: 12px; } /* Make setup and password inputs easy to tap. */
+.auth-panel .button { min-height: 43px; } /* Give entry actions a mobile-friendly target size. */
+.full-width { width: 100%; } /* Allow the main entry action to fill its form width. */
+.auth-footnote { margin: 22px 0 0; font-size: 10px; color: #a195ab; } /* Repeat where this local household's data lives. */
+.setup-grid { display: grid; gap: 16px; } /* Separate roommate setup rows. */
+.setup-member { display: grid; grid-template-columns: 1fr 1fr 95px; gap: 13px; border: 1px solid #e3daee; border-radius: 9px; padding: 14px 16px 0; min-width: 0; } /* Group a roommate's name, username, and rent percentage. */
+.setup-member legend { font-weight: 600; font-size: 11px; color: #927baa; padding: 0 7px; } /* Label each roommate row. */
+.setup-member .field { min-width: 0; margin-bottom: 13px; } /* Prevent narrow setup inputs from overflowing. */
+.split-total { background: #f0eafa; padding: 12px 15px; border-radius: 7px; font-size: 12px; color: #836aa6; margin: 18px 0 10px; } /* Show whether the rent percentage total equals 100%. */
+.setup-notice { background: #f3edf9; color: #8e76a5; font-size: 12px; padding: 12px 15px; border-radius: 8px; } /* Explain preserved records and purchase ownership. */
+.signed-in-label { max-width: 200px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; letter-spacing: 0; font-size: 11px; color: #8d7e9c; } /* Identify the current account without overflowing the header. */
+.scope-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 23px; } /* Separate shared expenses from the user's personal purchases. */
+button:disabled { opacity: .6; cursor: wait; } /* Indicate that a save or password check is still running. */
+@media (max-width: 1050px) { .auth-story { padding-inline: 30px; } .auth-panel { padding-inline: 30px; } .setup-member { grid-template-columns: 1fr 1fr; } .setup-member .field:last-child { grid-column: 1 / -1; } .saved-label { display: none; } } /* Keep setup and account labels usable on laptops. */
+@media (max-width: 700px) { .auth-layout { grid-template-columns: 1fr; } .auth-story { padding: 25px; } .auth-story .brand { margin-bottom: 20px; } .auth-story h1 { font-size: 30px; } .auth-story h1 br { display: none; } .auth-story > p:not(.eyebrow), .auth-feature, .auth-story > small { display: none; } .auth-panel { padding: 30px 22px 45px; } .auth-panel h1 { font-size: 27px; } .signed-in-label { max-width: 120px; font-size: 10px; } .topbar { letter-spacing: 0; padding-inline: 15px; } .topbar .button { font-size: 10px; padding: 6px 9px; } } /* Stack the welcome panels on phones and keep logout accessible. */
+@media (max-width: 380px) { .setup-member { grid-template-columns: 1fr; } .setup-member .field:last-child { grid-column: auto; } } /* Stack all roommate fields on very narrow phones. */
+
+.confirm-symbol { width: 45px; height: 45px; display: grid; place-items: center; border-radius: 13px; background: #fff0f2; color: #b77586; font-size: 24px; margin-bottom: 17px; } /* Introduce a destructive action with a calm in-page icon. */
+#confirm-dialog h2 { font-size: 23px; margin-bottom: 12px; } /* Make the confirmation title clear without using browser chrome. */
+#confirm-message { font-size: 13px; margin-bottom: 23px; overflow-wrap: anywhere; } /* Keep deletion details readable even with long item names. */
+.manual-share { background: #f4eefb; border-color: #b59bd8; } /* Distinguish percentages the user has fixed manually. */
+.checkbox-field { display: flex; align-items: center; gap: 10px; font-size: 12px; margin: 20px 0 15px; color: #746580; } /* Make simulated credit permission an explicit opt-in. */
+.checkbox-field input { width: 17px; height: 17px; accent-color: var(--purple); } /* Style the credit checkbox consistently with Live Easy. */
+.finance-panel .stats-grid { padding: 0 22px; margin-bottom: 10px; } /* Fit private finance cards inside their dashboard panel. */
+.finance-panel .stat-card { background: #fcfafe; padding: 15px; } /* Give the personal balance area a distinct but subtle background. */
+.finance-panel .stat-value { font-size: 24px; } /* Keep wage and balance amounts readable in the smaller panel cards. */
+@media (max-width: 1100px) { .finance-panel .stats-grid { grid-template-columns: 1fr 1fr; } } /* Stack private finance metrics before they become cramped. */
+@media (max-width: 560px) { .finance-panel .stats-grid { padding-inline: 14px; } .finance-panel .list-row { flex-wrap: wrap; } .finance-panel .row-main { min-width: 130px; } } /* Keep per-expense payment buttons usable on phones. */
+
+.heading-actions { display: flex; gap: 9px; flex-wrap: wrap; justify-content: flex-end; } /* Put budget settings and adding a purchase together in the tab header. */
+.budget-panel { margin-bottom: 22px; } /* Separate budget planning from debts and purchase history. */
+.budget-content { padding: 0 23px 20px; } /* Align the budget progress and explanation with the card heading. */
+.budget-numbers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 17px; } /* Compare the monthly target, spending, and remaining amount. */
+.budget-numbers small { display: block; font-size: 11px; color: var(--muted); } /* Label budget values in the same quiet style as the other cards. */
+.budget-numbers strong { display: block; font: 800 22px 'Manrope', sans-serif; margin-top: 6px; } /* Make budget progress easy to read at a glance. */
+.budget-over { color: #b26a7b; } /* Clearly distinguish overspending from a positive remaining budget. */
+.budget-content .form-help { margin-top: 14px; margin-bottom: 0; } /* Explain scope without crowding the budget figures. */
+@media (max-width: 800px) { nav a[data-page="expenses"] { font-size: 11px; } .heading-actions { justify-content: flex-start; } } /* Fit the expanded tab name and header actions on smaller screens. */
+@media (max-width: 560px) { .heading-actions { flex-direction: column; min-width: 105px; } .heading-actions .button { font-size: 10px; padding: 7px 8px; } .budget-numbers { grid-template-columns: 1fr; gap: 10px; } .budget-numbers strong { font-size: 20px; margin-top: 2px; } .budget-panel .card-head { align-items: flex-start; } .budget-panel .button { font-size: 10px; } nav a[data-page="expenses"] { gap: 3px; font-size: 10px; } } /* Keep budget setup usable and navigation readable on narrow phones. */
+
+.overview-stats { grid-template-columns: repeat(6, minmax(0, 1fr)); } /* Show paid share, unpaid share, available balance, and the three household activity metrics. */
+@media (max-width: 1200px) { .overview-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } } /* Keep six overview metrics readable in two rows on laptop screens. */
+@media (max-width: 800px) { .overview-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); } } /* Wrap the summary into two columns on tablets and phones. */
+
+.checkout-list { max-height: 300px; overflow-y: auto; border: 1px solid var(--line); border-radius: 9px; } /* Keep a long debt review compact and scrollable. */
+.checkout-row { display: flex; align-items: center; gap: 12px; padding: 14px; border-bottom: 1px solid var(--line); cursor: pointer; } /* Let the whole expense row toggle its checkbox. */
+.checkout-row:last-child { border-bottom: 0; } /* Avoid a doubled border below the final reviewed expense. */
+.checkout-row input { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--purple); } /* Match checkboxes to Live Easy while keeping them easy to select. */
+.checkout-row > strong { white-space: nowrap; font-size: 12px; } /* Keep each remaining share aligned beside its recipient. */
+.checkout-total { display: flex; align-items: center; justify-content: space-between; gap: 15px; background: #f4effc; color: #775b9f; border-radius: 8px; padding: 14px 15px; margin: 16px 0; font-size: 12px; } /* Distinguish the selected-item total from individual expense amounts. */
+.checkout-total strong { font: 800 22px 'Manrope', sans-serif; } /* Make the amount being confirmed easy to review. */

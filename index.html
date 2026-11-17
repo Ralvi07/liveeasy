@@ -1,0 +1,56 @@
+<!DOCTYPE html> <!-- Tell the browser to use modern HTML. -->
+<html lang="en"> <!-- Set the language for screen readers. -->
+<head> <!-- Start the page settings. -->
+<meta charset="UTF-8"> <!-- Support letters and symbols. -->
+<meta name="viewport" content="width=device-width, initial-scale=1"> <!-- Fit the page to mobile screens. -->
+<meta name="description" content="Live Easy keeps your apartment's expenses, chores, and shopping in one happy place."> <!-- Describe this website. -->
+<title>Live Easy | Your home, together</title> <!-- Name the browser tab. -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml"> <!-- Use our little house icon. -->
+<link rel="stylesheet" href="styles.css"> <!-- Load all page styles. -->
+<script src="js/shared.js" defer></script> <!-- Load storage and helper functions first. -->
+<script src="js/shares.js" defer></script> <!-- Load automatic rent-share controls. -->
+<script src="js/finance.js" defer></script> <!-- Load salary, wallet, repayments, and simulated credit. -->
+<script src="js/members.js" defer></script> <!-- Load admin membership and role-transfer controls. -->
+<script src="js/auth.js" defer></script> <!-- Load local setup and password handling. -->
+<script src="js/overview.js" defer></script> <!-- Load the overview tab. -->
+<script src="js/expenses.js" defer></script> <!-- Load the expenses tab. -->
+<script src="js/chores.js" defer></script> <!-- Load the chores tab. -->
+<script src="js/shopping.js" defer></script> <!-- Load the shopping tab. -->
+<script src="js/app.js" defer></script> <!-- Start the app after its other files load. -->
+</head> <!-- Finish page settings. -->
+<body class="auth-mode"> <!-- Keep household content hidden until login succeeds. -->
+<section id="auth-screen" aria-label="Welcome and login"></section> <!-- Show setup or login before opening the household. -->
+<a class="skip-link" href="#main">Skip to content</a> <!-- Let keyboard users skip the menu. -->
+<aside class="sidebar"> <!-- Hold the desktop navigation. -->
+<a class="brand" href="#overview"><span class="brand-icon" aria-hidden="true">⌂</span> Live Easy<span class="brand-dot">.</span></a> <!-- Link the logo to the overview. -->
+<p class="eyebrow side-label">YOUR SHARED SPACE</p> <!-- Label the menu. -->
+<nav aria-label="Main navigation"> <!-- Name this navigation for screen readers. -->
+<a href="#overview" data-page="overview"><span aria-hidden="true">▦</span> Overview</a> <!-- Open the household dashboard. -->
+<a href="#expenses" data-page="expenses"><span aria-hidden="true">↗</span> Money &amp; Expenses</a> <!-- Open the expense tracker. -->
+<a href="#chores" data-page="chores"><span aria-hidden="true">✓</span> Chores <span class="nav-count" id="chore-count">0</span></a> <!-- Open chores and show the unfinished count. -->
+<a href="#shopping" data-page="shopping"><span aria-hidden="true">▤</span> Shopping</a> <!-- Open the shopping list. -->
+</nav> <!-- Finish the navigation. -->
+<div class="sidebar-bottom"> <!-- Anchor home information at the bottom. -->
+<button class="house-switch" id="house-settings"><span class="home-square" aria-hidden="true">⌂</span><span><strong>Household settings</strong><small id="household-size">Your shared home</small></span><span aria-hidden="true">⚙</span></button> <!-- Open household settings. -->
+</div> <!-- Finish the sidebar footer. -->
+</aside> <!-- Finish the sidebar. -->
+<div class="workspace"> <!-- Hold the header and active page. -->
+<header class="topbar"><span>OUR HOME / <strong id="breadcrumb">Overview</strong></span><div class="topbar-right"><span class="saved-label" id="save-label">● Saved on this browser</span><span id="signed-in-user" class="signed-in-label"></span><button class="button" id="logout-button" type="button">Log out</button></div></header> <!-- Show the active section and storage status. -->
+<main id="main" tabindex="-1"> <!-- Give the application content a keyboard focus target. -->
+<div id="page-content"></div> <!-- Let each tab render its content here. -->
+<footer class="page-footer"><span>Made for the place you call home.</span><span>Local browser storage · <button class="text-button" id="download-source">Download source code ↗</button></span></footer> <!-- Offer the commented project files. -->
+</main> <!-- Finish the main content. -->
+</div> <!-- Finish the workspace. -->
+<dialog id="editor" aria-labelledby="dialog-title"> <!-- Reuse one accessible dialog for all forms. -->
+<form id="editor-form"> <!-- Validate and submit the active form. -->
+<div class="dialog-header"><div><p class="eyebrow">A LITTLE HOME ADMIN</p><h2 id="dialog-title">Add a record</h2></div><button type="button" class="icon-button" id="close-dialog" aria-label="Close dialog">×</button></div> <!-- Show the form title and close button. -->
+<div id="form-fields"></div> <!-- Insert the fields for the selected action. -->
+<p class="form-error" id="form-error" role="alert"></p> <!-- Explain errors without closing the form. -->
+<div class="dialog-actions"><button type="button" class="button secondary" id="cancel-dialog">Cancel</button><button type="submit" class="button primary">Save changes</button></div> <!-- Offer cancel and save actions. -->
+</form> <!-- Finish the editor form. -->
+</dialog> <!-- Finish the shared dialog. -->
+<dialog id="confirm-dialog" aria-labelledby="confirm-title"><div class="confirm-symbol" aria-hidden="true">!</div><h2 id="confirm-title">Delete item?</h2><p id="confirm-message" class="muted"></p><p id="confirm-error" class="form-error" role="alert"></p><div class="dialog-actions"><button type="button" class="button" id="confirm-cancel">Keep item</button><button type="button" class="button danger" id="confirm-accept">Delete item</button></div></dialog> <!-- Confirm destructive actions inside the application instead of a browser popup. -->
+<div class="toast" id="toast" role="status" aria-live="polite"></div> <!-- Announce saved changes politely. -->
+<noscript>Please enable JavaScript to use Live Easy.</noscript> <!-- Explain why the app needs JavaScript. -->
+</body> <!-- Finish the visible page. -->
+</html> <!-- Finish the HTML document. -->
