@@ -1,3 +1,4 @@
+// Renders the household shopping list and coordinates its filtering and item editing.
 "use strict";
 let shoppingSearch = "";
 let shoppingStatus = "all";
@@ -14,10 +15,12 @@ function renderShopping() {
   document.querySelector("#shopping-search").addEventListener("input", event => { shoppingSearch = event.target.value; renderShoppingResults(); });
   document.querySelector("#shopping-status").addEventListener("change", event => { shoppingStatus = event.target.value; renderShoppingResults(); });
 }
+// Refresh the filtered shopping items within the current view.
 function renderShoppingResults() {
   const filtered = state.shopping.filter(item => item.title.toLowerCase().includes(shoppingSearch.toLowerCase()) && (shoppingStatus === "all" || (shoppingStatus === "bought" && item.bought) || (shoppingStatus === "pending" && !item.bought))).sort((a, b) => Number(a.bought) - Number(b.bought));
   document.querySelector("#shopping-results").innerHTML = filtered.length ? filtered.map(item => shoppingRow(item)).join("") : empty("Nothing on this list", "Add something for the home or adjust your filters.");
 }
+// Reuse the shopping editor for adding and updating an item.
 function shoppingForm(id) {
   const existing = state.shopping.find(item => item.id === id);
   const item = existing || { title: "", quantity: 1, price: 0, category: "Groceries", bought: false };

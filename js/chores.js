@@ -1,3 +1,4 @@
+// Renders household chores and coordinates their filtering and editing.
 "use strict";
 let choreStatus = "all";
 let choreMember = "";
@@ -16,10 +17,12 @@ function renderChores() {
   document.querySelector("#chore-status").addEventListener("change", event => { choreStatus = event.target.value; renderChoreResults(); });
   document.querySelector("#chore-member").addEventListener("change", event => { choreMember = event.target.value; renderChoreResults(); });
 }
+// Refresh the filtered chore list independently of the page controls.
 function renderChoreResults() {
   const filtered = state.chores.filter(chore => (choreMember === "" || chore.assignee === Number(choreMember)) && (choreStatus === "all" || (choreStatus === "done" && chore.done) || (choreStatus === "pending" && !chore.done) || (choreStatus === "overdue" && !chore.done && chore.due < today()))).sort((a, b) => Number(a.done) - Number(b.done) || a.due.localeCompare(b.due));
   document.querySelector("#chore-results").innerHTML = filtered.length ? filtered.map(chore => choreRow(chore)).join("") : empty("No chores here", "Add a chore or choose a different filter.");
 }
+// Use the same editor for new chores and for changes to an existing record.
 function choreForm(id) {
   const existing = state.chores.find(chore => chore.id === id);
   const chore = existing || { title: "", assignee: currentUser, due: today(), done: false };

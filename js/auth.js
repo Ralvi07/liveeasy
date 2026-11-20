@@ -1,3 +1,4 @@
+// Handles household setup, local sign-in, and the first-time credential flow.
 "use strict"; // Keep setup and local login mistakes visible during development.
 let setupDraft = null; // Keep unfinished setup only in memory until it is valid.
 let loginIndex = null; // Remember the selected roommate during the two-step login.

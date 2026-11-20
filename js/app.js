@@ -1,3 +1,4 @@
+// Coordinates page rendering and navigation and wires household settings into the application.
 "use strict"; // Enable stricter checks for app startup and navigation.
 const pages = { overview: renderOverview, expenses: renderExpenses, chores: renderChores, shopping: renderShopping }; // Connect each URL hash to its tab renderer.
 function renderPage() { // Show the requested tab and update shared navigation.

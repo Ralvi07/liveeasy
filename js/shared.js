@@ -1,3 +1,4 @@
+// Loads and persists household state and provides shared date, formatting, and rendering helpers.
 "use strict"; // Catch common JavaScript mistakes instead of silently ignoring them.
 const STORAGE_KEY = "roomly-household-v1"; // Keep the original browser key so the Live Easy rename preserves existing accounts and records.
 const content = document.querySelector("#page-content"); // Find the area where active tabs appear.

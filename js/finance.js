@@ -1,3 +1,4 @@
+// Maintains wallet and ledger data and computes recurring monthly dates and balances.
 "use strict"; // Keep financial calculations explicit and easy to debug.
 function defaultFinance() { // Create an optional wallet profile without inventing income or funds.
   return { enabled: false, onboarded: false, openingBalance: 0, startIndex: 0, salary: 0, payday: "", credit: false, creditLimit: 0, autopay: "off", monthlyBudget: 0 }; // Store cents and a monthly payday anchor.

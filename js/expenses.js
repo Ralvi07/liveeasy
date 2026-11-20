@@ -1,3 +1,4 @@
+// Renders and filters shared expenses, handles expense editing, and prepares exports.
 "use strict";
 let expenseSearch = "";
 let expenseCategory = "";
@@ -21,6 +22,7 @@ function renderExpenses() {
   document.querySelector("#expense-search").addEventListener("input", event => { expenseSearch = event.target.value; renderExpenseResults(); });
   document.querySelector("#expense-category").addEventListener("change", event => { expenseCategory = event.target.value; renderExpenseResults(); });
 }
+// Refresh the results for the current expense filters.
 function renderExpenseResults() {
   const filtered = selectedExpenses().filter(expense => expense.title.toLowerCase().includes(expenseSearch.toLowerCase()) && (!expenseCategory || expense.category === expenseCategory)).sort((a, b) => b.date.localeCompare(a.date));
   document.querySelector("#expense-results").innerHTML = filtered.length ? `<div class="table-wrap"><table><thead><tr><th>PURCHASE</th><th>PAID BY</th><th>CATEGORY</th><th>DATE</th><th>AMOUNT</th><th>ACTIONS</th></tr></thead><tbody>${filtered.map(expense => `<tr><td><strong>${escapeHtml(expense.title)}</strong></td><td><span class="table-person">${avatar(expense.payer)}${escapeHtml(state.members[expense.payer])}</span></td><td><span class="pill">${escapeHtml(expense.category)}</span></td><td>${dateLabel(expense.date)}</td><td><strong>${money(expense.amount)}</strong></td><td><div class="row-actions">${expense.scope !== "personal" && expense.payer !== currentUser ? `<button class="text-button" data-action="repay" data-id="${expense.id}" ${remainingDebt(expense, currentUser) === 0 ? "disabled" : ""}>${remainingDebt(expense, currentUser) ? `Pay ${money(remainingDebt(expense, currentUser))}` : "Paid"}</button>` : ""}<button class="text-button" data-action="edit-expense" data-id="${expense.id}" aria-label="Edit ${escapeHtml(expense.title)}" ${expense.payer !== currentUser ? "hidden" : ""}>Edit</button><button class="text-button delete-button" data-action="delete-expense" data-id="${expense.id}" aria-label="Delete ${escapeHtml(expense.title)}" ${expense.payer !== currentUser ? "hidden" : ""}>Delete</button></div></td></tr>`).join("")}</tbody></table></div>` : empty("No purchases found", "Try another filter or add a purchase to this view.");
@@ -52,6 +54,7 @@ function expenseForm(id) {
     return true;
   });
 }
+// Export the expense selection as a downloadable report.
 function exportExpenses() {
   const quote = value => '"' + String(value).replace(/"/g, '""') + '"';
   const safeText = value => /^[=+@-]/.test(value) ? "'" + value : value;

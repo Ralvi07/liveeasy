@@ -1,3 +1,4 @@
+// Builds the dashboard from the saved household state, rent plan, and shared payment records.
 "use strict"; // Use stricter JavaScript checks in this file.
 function renderOverview() { // Build the household dashboard from the current saved records.
   const shares = mySharedPaymentProgress(); // Show the current user's paid and unpaid portions instead of household-wide spending.

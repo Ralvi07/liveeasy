@@ -1,3 +1,4 @@
+// Balances adjustable percentage shares and binds their inputs while respecting locked values.
 "use strict"; // Keep percentage control errors visible while developing.
 function adjustShares(values, locked, changed, requested) { // Rebalance only shares that the user has not manually fixed.
   const next = [...values]; // Preserve the previous valid split until a new one is ready.

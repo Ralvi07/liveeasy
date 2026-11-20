@@ -1,3 +1,4 @@
+// Handles administrator actions for adding and removing members and transferring the administrator role.
 "use strict"; // Keep household membership changes separate from the four tab implementations.
 function memberManager() { // Give only the current admin access to member and admin-role controls.
   if (!isAdmin()) { notify("Only the household admin can manage members."); return; } // Enforce the transferable administrator role.

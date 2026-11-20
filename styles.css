@@ -1,3 +1,4 @@
+/* Defines the shared layout and styles for Live Easy's navigation, forms, and household views. */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap'); /* Load optional fonts; system fonts remain the fallback. */
 :root { --purple: #7357ce; --purple-dark: #6045ba; --ink: #292733; --muted: #777581; --line: #eae9ef; --paper: #faf9fc; --green: #3a826c; } /* Keep reusable colors in one place. */
 * { box-sizing: border-box; } /* Include padding and borders inside element widths. */
